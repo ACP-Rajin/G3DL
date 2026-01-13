@@ -85,6 +85,7 @@ public class GFile{
 	}
 
 	public byte[]getBytes(){return b;}
+
 	public static String readAsString(String path){
 		try{
 			return readAsString(new FileInputStream(path));
@@ -93,7 +94,6 @@ public class GFile{
 			return null;
 		}
 	}
-
 	public static String readAsString(InputStream inputStream){
 		StringBuilder content=new StringBuilder();
 		BufferedReader br=null;
@@ -116,7 +116,6 @@ public class GFile{
 			bw.close();
 		}catch(IOException e){}
 	}
-
 	public static void writeToFile(String path,byte[] content){
 		try{
 			FileOutputStream fos=new FileOutputStream(path);
