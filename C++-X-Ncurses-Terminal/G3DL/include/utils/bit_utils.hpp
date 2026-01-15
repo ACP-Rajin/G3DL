@@ -16,22 +16,19 @@
 
 #pragma once
 
-#include <array>
-#include <cassert>
+#include <cstdint>
 
-namespace g3dl_math{
-  struct Vector2f{
-    static const Vector2f zero;
-    float x=0,y=0;
-
-    constexpr Vector2f();
-    constexpr Vector2f(float xy);
-    constexpr Vector2f(float x,float y);
-
-    constexpr std::array<float,2>toArray()const;
-
-    void set(float x,float y);
-    void set(const Vector2f& v);
-    void set(float xy);
-  };
+namespace bit{
+  inline void set(uint8_t *byte,uint8_t n){
+    *byte = *byte | (1u << n);
+  }
+  inline void clear(uint8_t *byte,uint8_t n){
+    *byte = *byte & ~(1u << n);
+  }
+  inline void toggle(uint8_t *byte,uint8_t n){
+    *byte = *byte ^ (1u << n);
+  }
+  inline uint8_t read(uint8_t *byte,uint8_t n){
+    return (*byte >> n) & 1u;
+  }
 }
